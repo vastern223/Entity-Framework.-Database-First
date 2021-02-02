@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="RoomsInfo" EntityType="Model1.RoomsInfo" />
+    <EntitySet Name="UsersInfo" EntityType="Model1.UsersInfo" />
+    <AssociationSet Name="RoomsInfoUsersInfo" Association="Model1.RoomsInfoUsersInfo">
+      <End Role="RoomsInfo" EntitySet="RoomsInfo" />
+      <End Role="UsersInfo" EntitySet="UsersInfo" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="RoomsInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Area" Type="Int32" Nullable="false" />
+    <Property Name="AccommodationAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StartRent" Type="DateTime" Nullable="true" Precision="0" />
+    <Property Name="EndRent" Type="DateTime" Nullable="true" Precision="0" />
+    <NavigationProperty Name="UsersInfo" Relationship="Model1.RoomsInfoUsersInfo" FromRole="RoomsInfo" ToRole="UsersInfo" />
+    <Property Name="UsersInfoId" Type="Int32" Nullable="true" />
+  </EntityType>
+  <EntityType Name="UsersInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RoomsInfo" Relationship="Model1.RoomsInfoUsersInfo" FromRole="UsersInfo" ToRole="RoomsInfo" />
+  </EntityType>
+  <Association Name="RoomsInfoUsersInfo">
+    <End Type="Model1.RoomsInfo" Role="RoomsInfo" Multiplicity="*" />
+    <End Type="Model1.UsersInfo" Role="UsersInfo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UsersInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoomsInfo">
+        <PropertyRef Name="UsersInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

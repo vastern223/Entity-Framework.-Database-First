@@ -1,0 +1,12 @@
+C:\Users\Kolotyuk\source\repos\Intro_to_Entity_Framework.Database_First\Intro_to_Entity_Framework.Database_First\obj\Debug\Intro_to_Entity_Framework.Database_First.csprojAssemblyReference.cache
+C:\Users\Kolotyuk\source\repos\Intro_to_Entity_Framework.Database_First\Intro_to_Entity_Framework.Database_First\obj\Debug\Intro_to_Entity_Framework.Database_First.csproj.CoreCompileInputs.cache
+C:\Users\Kolotyuk\source\repos\Intro_to_Entity_Framework.Database_First\Intro_to_Entity_Framework.Database_First\bin\Debug\Intro_to_Entity_Framework.Database_First.exe.config
+C:\Users\Kolotyuk\source\repos\Intro_to_Entity_Framework.Database_First\Intro_to_Entity_Framework.Database_First\bin\Debug\Intro_to_Entity_Framework.Database_First.exe
+C:\Users\Kolotyuk\source\repos\Intro_to_Entity_Framework.Database_First\Intro_to_Entity_Framework.Database_First\bin\Debug\Intro_to_Entity_Framework.Database_First.pdb
+C:\Users\Kolotyuk\source\repos\Intro_to_Entity_Framework.Database_First\Intro_to_Entity_Framework.Database_First\bin\Debug\EntityFramework.dll
+C:\Users\Kolotyuk\source\repos\Intro_to_Entity_Framework.Database_First\Intro_to_Entity_Framework.Database_First\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Kolotyuk\source\repos\Intro_to_Entity_Framework.Database_First\Intro_to_Entity_Framework.Database_First\bin\Debug\EntityFramework.xml
+C:\Users\Kolotyuk\source\repos\Intro_to_Entity_Framework.Database_First\Intro_to_Entity_Framework.Database_First\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Kolotyuk\source\repos\Intro_to_Entity_Framework.Database_First\Intro_to_Entity_Framework.Database_First\obj\Debug\Intro_to_Entity_Framework.Database_First.csproj.CopyComplete
+C:\Users\Kolotyuk\source\repos\Intro_to_Entity_Framework.Database_First\Intro_to_Entity_Framework.Database_First\obj\Debug\Intro_to_Entity_Framework.Database_First.exe
+C:\Users\Kolotyuk\source\repos\Intro_to_Entity_Framework.Database_First\Intro_to_Entity_Framework.Database_First\obj\Debug\Intro_to_Entity_Framework.Database_First.pdb

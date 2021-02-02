@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="RoomsInfo" EntityType="Model1.Store.RoomsInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UsersInfo" EntityType="Model1.Store.UsersInfo" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="RoomsInfoUsersInfo" Association="Model1.Store.RoomsInfoUsersInfo">
+      <End Role="RoomsInfo" EntitySet="RoomsInfo" />
+      <End Role="UsersInfo" EntitySet="UsersInfo" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="RoomsInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Area" Type="int" Nullable="false" />
+    <Property Name="AccommodationAddress" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="StartRent" Type="datetime" Nullable="true" />
+    <Property Name="EndRent" Type="datetime" Nullable="true" />
+    <Property Name="UsersInfoId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="UsersInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="RoomsInfoUsersInfo">
+    <End Role="RoomsInfo" Type="Model1.Store.RoomsInfo" Multiplicity="*" />
+    <End Role="UsersInfo" Type="Model1.Store.UsersInfo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UsersInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoomsInfo">
+        <PropertyRef Name="UsersInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="RoomsInfo" EntityType="Model1.RoomsInfo" />
+          <EntitySet Name="UsersInfo" EntityType="Model1.UsersInfo" />
+          <AssociationSet Name="RoomsInfoUsersInfo" Association="Model1.RoomsInfoUsersInfo">
+            <End Role="RoomsInfo" EntitySet="RoomsInfo" />
+            <End Role="UsersInfo" EntitySet="UsersInfo" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="RoomsInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Area" Type="Int32" Nullable="false" />
+          <Property Name="AccommodationAddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StartRent" Type="DateTime" Nullable="true" Precision="0" />
+          <Property Name="EndRent" Type="DateTime" Nullable="true" Precision="0" />
+          <NavigationProperty Name="UsersInfo" Relationship="Model1.RoomsInfoUsersInfo" FromRole="RoomsInfo" ToRole="UsersInfo" />
+          <Property Name="UsersInfoId" Type="Int32" Nullable="true" />
+        </EntityType>
+        <EntityType Name="UsersInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RoomsInfo" Relationship="Model1.RoomsInfoUsersInfo" FromRole="UsersInfo" ToRole="RoomsInfo" />
+        </EntityType>
+        <Association Name="RoomsInfoUsersInfo">
+          <End Type="Model1.RoomsInfo" Role="RoomsInfo" Multiplicity="*" />
+          <End Type="Model1.UsersInfo" Role="UsersInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UsersInfo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoomsInfo">
+              <PropertyRef Name="UsersInfoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="RoomsInfo">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.RoomsInfo)">
+        <MappingFragment StoreEntitySet="RoomsInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="AccommodationAddress" ColumnName="AccommodationAddress" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="StartRent" ColumnName="StartRent" />
+          <ScalarProperty Name="EndRent" ColumnName="EndRent" />
+          <ScalarProperty Name="UsersInfoId" ColumnName="UsersInfoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersInfo">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.UsersInfo)">
+        <MappingFragment StoreEntitySet="UsersInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

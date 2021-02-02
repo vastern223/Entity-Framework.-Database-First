@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="RoomsInfo" EntityType="Model1.Store.RoomsInfo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UsersInfo" EntityType="Model1.Store.UsersInfo" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="RoomsInfoUsersInfo" Association="Model1.Store.RoomsInfoUsersInfo">
+      <End Role="RoomsInfo" EntitySet="RoomsInfo" />
+      <End Role="UsersInfo" EntitySet="UsersInfo" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="RoomsInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Area" Type="int" Nullable="false" />
+    <Property Name="AccommodationAddress" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="StartRent" Type="datetime" Nullable="true" />
+    <Property Name="EndRent" Type="datetime" Nullable="true" />
+    <Property Name="UsersInfoId" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="UsersInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="RoomsInfoUsersInfo">
+    <End Role="RoomsInfo" Type="Model1.Store.RoomsInfo" Multiplicity="*" />
+    <End Role="UsersInfo" Type="Model1.Store.UsersInfo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UsersInfo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RoomsInfo">
+        <PropertyRef Name="UsersInfoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
